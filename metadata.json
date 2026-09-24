@@ -1,0 +1,6 @@
+{
+  "name": "MasterHub Ultra",
+  "description": "ระบบบริหารจัดการธุรกิจ วินัยส่วนตัว นิสัยประจำวัน Anti-Goals และโค้ชอัจฉริยะ AI Master Coach",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
