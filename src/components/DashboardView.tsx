@@ -16,6 +16,7 @@ import {
 import { GoalItem, ActiveTab } from '../types';
 import { calculateGoalStats, calculateOverallStats } from '../utils/analytics';
 import { getTodayString } from '../utils/storage';
+import { Achievements } from './Achievements';
 
 interface DashboardViewProps {
   goals: Record<string, GoalItem>;
@@ -68,7 +69,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       {/* 3 Top Ultra Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {/* Total Goals */}
-        <div className="bg-white dark:bg-zinc-900 p-5 rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs space-y-2 relative overflow-hidden">
+        <div className="glass dark:glass-dark p-5 rounded-3xl shadow-xs space-y-2 relative overflow-hidden">
           <div className="flex justify-between items-start">
             <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
               รายการทั้งหมดในระบบ
@@ -81,7 +82,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             {overallStats.totalGoals}{' '}
             <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400">รายการ</span>
           </div>
-          <div className="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 pt-1 border-t border-zinc-100 dark:border-zinc-800/70">
+          <div className="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 pt-1 border-t border-zinc-100/50 dark:border-zinc-800/70">
             <span className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium">
               <Briefcase className="w-3 h-3" /> งาน {overallStats.workGoalsCount}
             </span>
@@ -93,7 +94,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* Overall Completion */}
-        <div className="bg-white dark:bg-zinc-900 p-5 rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs space-y-2 relative overflow-hidden">
+        <div className="glass dark:glass-dark p-5 rounded-3xl shadow-xs space-y-2 relative overflow-hidden">
           <div className="flex justify-between items-start">
             <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
               ความสำเร็จภาพรวมเฉลี่ย
@@ -105,7 +106,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="text-2xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">
             {overallStats.avgCompletion}%
           </div>
-          <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-2 rounded-full overflow-hidden">
+          <div className="w-full bg-zinc-200/50 dark:bg-zinc-800/50 h-2 rounded-full overflow-hidden">
             <div
               className="bg-emerald-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${overallStats.avgCompletion}%` }}
@@ -117,7 +118,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* Max Streak */}
-        <div className="bg-white dark:bg-zinc-900 p-5 rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs space-y-2 relative overflow-hidden">
+        <div className="glass dark:glass-dark p-5 rounded-3xl shadow-xs space-y-2 relative overflow-hidden">
           <div className="flex justify-between items-start">
             <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
               🔥 Streak สูงสุดตอนนี้
@@ -130,7 +131,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             {overallStats.maxStreak}{' '}
             <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400">วันติด</span>
           </div>
-          <div className="text-xs text-zinc-500 dark:text-zinc-400 pt-1 border-t border-zinc-100 dark:border-zinc-800/70">
+          <div className="text-xs text-zinc-500 dark:text-zinc-400 pt-1 border-t border-zinc-100/50 dark:border-zinc-800/70">
             {overallStats.maxStreak > 0 ? (
               <span className="text-amber-600 dark:text-amber-400 font-medium">
                 โมเมนตัมกำลังยอดเยี่ยม รักษาความสม่ำเสมอไว้!
@@ -141,6 +142,8 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
       </div>
+
+      <Achievements totalCompleted={overallStats.completedStepsCount} />
 
       {/* Category Tabs: Clean Ultra segmented switchers */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

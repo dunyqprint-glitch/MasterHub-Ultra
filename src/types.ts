@@ -41,5 +41,13 @@ export interface CoachChatMessage {
   timestamp: string;
 }
 
+export interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  threshold: number;
+}
+
 export type ActiveTab = 'work' | 'personal' | 'all';
 export type ActiveView = 'dashboard' | 'detail' | 'analytics' | 'coach';

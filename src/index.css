@@ -6,6 +6,15 @@
   }
 }
 
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  }
+  .glass-dark {
+    @apply bg-zinc-900/40 backdrop-blur-xl border border-zinc-700/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  }
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
